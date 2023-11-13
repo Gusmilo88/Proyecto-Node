@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const customerSchema = mongoose.Schema({
+const eventsSchema = mongoose.Schema({
     _id:{
         type: Number,
         required: true
@@ -36,6 +36,6 @@ const customerSchema = mongoose.Schema({
     },
 })
 
-const Customer = mongoose.model("Customer", customerSchema)
+const Event = mongoose.model("Event", eventsSchema)
 
-module.exports = Customer
+module.exports = Event
