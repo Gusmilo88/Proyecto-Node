@@ -1,13 +1,20 @@
-const Customer = require("../models/Customer")
+const customerService = require("../services/customerService")
+
 
 const customerController = {
-    async getCustomer(req, res) {
-        try {
-            const customers = await Customer.find()
+    async getCustomers(req, res) {
 
-            res.status(200).json({success: true, customers: customers})
+        try {
+
+            const customersFounded = customerService.getCustomers()
+            if(customersFounded.length > 0){
+                res.status(200).json(customersFounded)
+            }else {
+                res.send("Customers not founded")
+            }
+
         } catch (error) {
-            res.status(500).json({success: false, message: "Internal server error"})
+            res.status(500).json({message: "Error getting customers: " + error.message})
         }
     },
 
@@ -25,14 +32,24 @@ const customerController = {
     },
 
     async createCustomer(req, res){
+
         try {
-            const newCustomer = await Customer.create(req.body)
-            res.status(200).json({success: true, customer: newCustomer})
+            const payload = req.body
+
+            const customerCreated = customerService.createCustomer(payload)
+    
+            if(customerCreated){
+                res.status(201).json({message: "Customer created"})
+            }else {
+                res.send("Error creating customer")
+            }
 
         } catch (error) {
-            console.log(error);
-            res.status(500).json({success: false, message: "Internal server error"})
+            res.status(500).json({message: "Error creating customer " + error,message})
+
         }
+        
+        
     },
 
     async updateCustomer(req, res){
