@@ -7,6 +7,6 @@ const eventRouter = require("./eventRouter")
 
 
 indexRouter.use("/customer", customerRouter)
-indexRouter.use("/event", eventRouter)
+indexRouter.use("/events", eventRouter)
 
 module.exports = indexRouter
