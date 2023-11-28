@@ -1,7 +1,7 @@
 const Customer = require("../models/Customer")
 
 const customerDAL = {
-    getAllEvents: async()=> {
+    getAllCustomers: async()=> {
         return await Customer.find()
     },
     findById: async(id)=> {

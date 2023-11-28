@@ -5,7 +5,7 @@ const customerService = {
 
     getCustomers: async()=> {
 
-        const customersFounded = customerDAL.getAllEvents()
+        const customersFounded = customerDAL.getAllCustomers()
 
         if(customersFounded && customersFounded.length > 0){
             return customersFounded
