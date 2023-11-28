@@ -1,10 +1,11 @@
 const express = require("express")
 const customerController = require("../controllers/customerController")
+const { verifyData } = require("../middlewares/verifications")
 const customerRouter = express.Router()
 
 customerRouter.get("/", customerController.getCustomers)
 
-customerRouter.post("/", customerController.createCustomer)
+customerRouter.post("/", verifyData, customerController.createCustomer)
 
 customerRouter.put("/:id", customerController.updateCustomer)
 
