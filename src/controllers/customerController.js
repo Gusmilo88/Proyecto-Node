@@ -6,7 +6,7 @@ const customerController = {
 
         try {
 
-            const customersFounded = customerService.getCustomers()
+            const customersFounded = await customerService.getCustomers()
             if(customersFounded.length > 0){
                 res.status(200).json(customersFounded)
             }else {
@@ -19,7 +19,6 @@ const customerController = {
     },
 
     async getOneCustomer(req, res) {
-        console.log(req.params);
         try {
             
             const customer = await Customer.findById(req.params.id)

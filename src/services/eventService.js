@@ -5,7 +5,7 @@ const eventService = {
 
     getEvents: async()=> {
 
-        const eventsFounded = eventDAL.getAllEvents()
+        const eventsFounded = await eventDAL.getAllEvents()
 
         if(eventsFounded && eventsFounded.length > 0){
             return eventsFounded
@@ -20,7 +20,7 @@ const eventService = {
         if(!payload){
             throw new Error("Se necesitan datos para crear el evento")
         }
-        const event = eventDAL.createEvent(payload)
+        const event = await eventDAL.createEvent(payload)
 
         if(event){
             return event

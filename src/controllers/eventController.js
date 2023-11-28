@@ -6,7 +6,7 @@ const eventController = {
 
         try {
 
-            const eventsFounded = eventService.getEvents()
+            const eventsFounded = await eventService.getEvents()
             if(eventsFounded.length > 0){
                 res.status(200).json(eventsFounded)
             }else {

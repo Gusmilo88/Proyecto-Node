@@ -5,7 +5,7 @@ const customerService = {
 
     getCustomers: async()=> {
 
-        const customersFounded = customerDAL.getAllCustomers()
+        const customersFounded = await customerDAL.getAllCustomers()
 
         if(customersFounded && customersFounded.length > 0){
             return customersFounded
