@@ -20,7 +20,7 @@ const customerService = {
         if(!payload){
             throw new Error("Se necesitan datos para crear al customer")
         }
-        const customer = customerDAL.createCustomer(payload)
+        const customer = await customerDAL.createCustomer(payload)
 
         if(customer){
             return customer

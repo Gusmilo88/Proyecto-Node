@@ -35,7 +35,7 @@ const eventController = {
         try {
             const payload = req.body
 
-            const eventCreated = eventService.createEvent(payload)
+            const eventCreated = await eventService.createEvent(payload)
     
             if(eventCreated){
                 res.status(201).json({message: "Event created"})
